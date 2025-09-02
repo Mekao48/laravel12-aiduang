@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -143,3 +145,30 @@ Route::get('/category/sport', [CategoryController::class, "sport"]);
 Route::get('/category/politic', [CategoryController::class, "politic"]);
 Route::get('/category/entertain', [CategoryController::class, "entertain"]);
 Route::get('/category/auto', [CategoryController::class, "auto"]);
+
+// use App\Models\Product;
+// use Illuminate\Support\Facades\DB;
+
+Route::get('query/sql', function () {
+    $products = DB::select("SELECT * FROM products");
+    // $products = DB::select("SELECT * FROM products WHERE price > 100");
+    return view('query-test', compact('products'));
+});
+
+Route::get('query/builder', function () {
+    $products = DB::table('products')->get();
+    // $products = DB::table('products')->where('price', '>', 100)->get();
+    return view('query-test', compact('products'));
+});
+
+Route::get('query/orm', function () {
+    $products = Product::get();
+    // $products = Product::where('price', '>', 100)->get();
+    return view('query-test', compact('products'));
+});
+Route::get('product/form', function () {
+    //
+})->name("product.form");
+Route::get('barchart', function () {    
+    return view('barchart');
+})->name('barchart');
