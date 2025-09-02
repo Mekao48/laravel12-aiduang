@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NewsController;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -172,3 +173,10 @@ Route::get('product/form', function () {
 Route::get('barchart', function () {    
     return view('barchart');
 })->name('barchart');
+
+// project
+
+Route::controller(NewsController::class)->group(function () {
+    Route::get('/news', 'index')->name('news');
+    Route::get('/news/{id}', 'show')->name('news_detail');
+});
