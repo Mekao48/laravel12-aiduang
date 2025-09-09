@@ -174,7 +174,7 @@ Route::get('barchart', function () {
     return view('barchart');
 })->name('barchart');
 
-// project
+// project ข่าว elon musk
 
 Route::controller(NewsController::class)->group(function () {
     Route::get('/news', 'index')->name('news');
