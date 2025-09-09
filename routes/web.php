@@ -3,8 +3,11 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
 use App\Models\Product;
+use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -170,7 +173,7 @@ Route::get('query/orm', function () {
 Route::get('product/form', function () {
     //
 })->name("product.form");
-Route::get('barchart', function () {    
+Route::get('barchart', function () {
     return view('barchart');
 })->name('barchart');
 
@@ -180,3 +183,41 @@ Route::controller(NewsController::class)->group(function () {
     Route::get('/news', 'index')->name('news');
     Route::get('/news/{id}', 'show')->name('news_detail');
 });
+
+// workshop
+Route::get('product-index', function () {
+    $products = Product::get();
+    return view('query-test', compact('products'));
+})->name("product.index");
+
+
+Route::get('product-form', function () {
+    return view('product-form');
+})->name("product.form");
+
+Route::post('/product-submit', function (HttpRequest $request) {
+    $data = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric|min:0',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ], [
+        'name.required' => 'กรุณากรอกชื่อสินค้า',
+        'description.required' => 'กรุณากรอกรายละเอียดสินค้า',
+        'price.required' => 'กรุณากรอกราคา',
+        'price.numeric' => 'ราคาต้องเป็นตัวเลข',
+        'image.image' => 'ไฟล์ต้องเป็นรูปภาพ',
+    ]);
+
+    // ตรวจสอบว่ามีการอัปโหลดรูปภาพ
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('uploads', 'public');
+        $url = Storage::url($imagePath);
+        $data["image"] = $url;
+    }
+
+    // บันทึกข้อมูลในฐานข้อมูล
+    Product::create($data);
+
+    return redirect()->route('product.index')->with('success', 'เพิ่มสินค้าแล้ว!');
+})->name('product.submit');
