@@ -20,12 +20,15 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
+          set -e
           cd /var/www/jedsada.csbootstrap.com/laravel12-aiduang
-          git pull origin main
+          git stash push -m "ci-deploy-$(date +%F-%T)" || true
+          git fetch origin main
+          git reset --hard origin/main
+          git stash pop || true
           composer install --no-interaction
           npm install
           npm run build
-          php artisan migrate
-          php artisan migrate:fresh
-          php artisan db:seed
+          php artisan migrate --force
+          php artisan db:seed --force
 # end
