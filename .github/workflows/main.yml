@@ -22,9 +22,13 @@ jobs:
         script: |
           set -e
           cd /var/www/jedsada.csbootstrap.com/laravel12-aiduang
-          git pull origin main
-          composer install --no-interaction
+          git stash push -m "ci-deploy-$(date +%F-%T)" || true
+          git fetch origin main
+          git reset --hard origin/main
+          git stash pop || true
+          composer install --no-interaction --prefer-dist --optimize-autoloader
           npm install
           npm run build
-          php artisan migrate
+          php artisan migrate:fresh --force
+          php artisan db:seed --force
 # end
