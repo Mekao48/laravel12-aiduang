@@ -61,7 +61,7 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         $news->update($request->all());
 
-        return redirect()->route('news.index')->with('success', 'News updated successfully!');
+        return redirect()->route('news.list')->with('success', 'News updated successfully!');
     }
 
     public function destroy($id)
@@ -69,7 +69,7 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         $news->delete();
 
-        return redirect()->route('news.index')->with('success', 'News deleted successfully!');
+        return redirect()->route('news.list')->with('success', 'News deleted successfully!');
     }
     // end this line
     /**
