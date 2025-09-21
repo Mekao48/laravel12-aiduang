@@ -1142,7 +1142,7 @@ news.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     news.form = newsForm
 /**
 * @see \App\Http\Controllers\NewsController::news_detail
- * @see app/Http/Controllers/NewsController.php:28
+ * @see app/Http/Controllers/NewsController.php:79
  * @route '/news/{id}'
  */
 export const news_detail = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1157,7 +1157,7 @@ news_detail.definition = {
 
 /**
 * @see \App\Http\Controllers\NewsController::news_detail
- * @see app/Http/Controllers/NewsController.php:28
+ * @see app/Http/Controllers/NewsController.php:79
  * @route '/news/{id}'
  */
 news_detail.url = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -1185,7 +1185,7 @@ news_detail.url = (args: { id: string | number } | [id: string | number ] | stri
 
 /**
 * @see \App\Http\Controllers\NewsController::news_detail
- * @see app/Http/Controllers/NewsController.php:28
+ * @see app/Http/Controllers/NewsController.php:79
  * @route '/news/{id}'
  */
 news_detail.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -1194,7 +1194,7 @@ news_detail.get = (args: { id: string | number } | [id: string | number ] | stri
 })
 /**
 * @see \App\Http\Controllers\NewsController::news_detail
- * @see app/Http/Controllers/NewsController.php:28
+ * @see app/Http/Controllers/NewsController.php:79
  * @route '/news/{id}'
  */
 news_detail.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -1204,7 +1204,7 @@ news_detail.head = (args: { id: string | number } | [id: string | number ] | str
 
     /**
 * @see \App\Http\Controllers\NewsController::news_detail
- * @see app/Http/Controllers/NewsController.php:28
+ * @see app/Http/Controllers/NewsController.php:79
  * @route '/news/{id}'
  */
     const news_detailForm = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1214,7 +1214,7 @@ news_detail.head = (args: { id: string | number } | [id: string | number ] | str
 
             /**
 * @see \App\Http\Controllers\NewsController::news_detail
- * @see app/Http/Controllers/NewsController.php:28
+ * @see app/Http/Controllers/NewsController.php:79
  * @route '/news/{id}'
  */
         news_detailForm.get = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -1223,7 +1223,7 @@ news_detail.head = (args: { id: string | number } | [id: string | number ] | str
         })
             /**
 * @see \App\Http\Controllers\NewsController::news_detail
- * @see app/Http/Controllers/NewsController.php:28
+ * @see app/Http/Controllers/NewsController.php:79
  * @route '/news/{id}'
  */
         news_detailForm.head = (args: { id: string | number } | [id: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

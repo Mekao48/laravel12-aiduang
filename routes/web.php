@@ -178,11 +178,20 @@ Route::get('barchart', function () {
 })->name('barchart');
 
 // project ข่าว elon musk
-
+Route::middleware(['auth'])->group(function () {
+Route::get('/news/list', [NewsController::class, 'list'])->name('news.index');
+Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
+Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
+Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
+Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
+});
 Route::controller(NewsController::class)->group(function () {
     Route::get('/news', 'index')->name('news');
     Route::get('/news/{id}', 'show')->name('news_detail');
 });
+
+
 
 // workshop
 Route::get('product-index', function () {
