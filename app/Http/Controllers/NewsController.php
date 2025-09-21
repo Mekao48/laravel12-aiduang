@@ -34,8 +34,8 @@ class NewsController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
-            'image' => 'required|string',
-            'source_url' => 'required|url',
+            'image' => 'string',
+            'source_url' => 'string',
         ]);
 
         News::create($request->all());
@@ -54,8 +54,8 @@ class NewsController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required',
-            'image' => 'required|string',
-            'source_url' => 'required|url',
+            'image' => 'string',
+            'source_url' => 'string',
         ]);
 
         $news = News::findOrFail($id);
