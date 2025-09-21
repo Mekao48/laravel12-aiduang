@@ -36,6 +36,7 @@ class NewsController extends Controller
             'content' => 'required',
             'image' => 'string',
             'source_url' => 'string',
+            'created_at' => now(),
         ]);
 
         News::create($request->all());
@@ -56,6 +57,7 @@ class NewsController extends Controller
             'content' => 'required',
             'image' => 'string',
             'source_url' => 'string',
+            'created_at' => now(),
         ]);
 
         $news = News::findOrFail($id);
