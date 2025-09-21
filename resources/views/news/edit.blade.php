@@ -8,6 +8,10 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
+            <label>Image Link</label>
+            <input type="text" name="image" value="{{ $news->image }}" class="form-control" required>
+            @error('title') <div class="text-danger">{{ $message }}</div> @enderror
+        <div class="mb-3">
             <label>Title</label>
             <input type="text" name="title" value="{{ $news->title }}" class="form-control" required>
             @error('title') <div class="text-danger">{{ $message }}</div> @enderror
@@ -17,8 +21,12 @@
             <textarea name="content" class="form-control" rows="5" required>{{ $news->content }}</textarea>
             @error('content') <div class="text-danger">{{ $message }}</div> @enderror
         </div>
+        <div class="mb-3">
+            <label>Source</label>
+            <input type="text" name="source_url" value="{{ $news->source_url }}" class="form-control" required>
+            @error('title') <div class="text-danger">{{ $message }}</div> @enderror
         <button type="submit" class="btn btn-success">Update</button>
-        <a href="{{ route('news.index') }}" class="btn btn-secondary">Back</a>
+        <a href="{{ route('news.list') }}" class="btn btn-secondary">Back</a>
     </form>
 </div>
 @endsection

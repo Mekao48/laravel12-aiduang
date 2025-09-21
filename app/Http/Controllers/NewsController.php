@@ -17,14 +17,12 @@ class NewsController extends Controller
     {
         $allNews = News::all();
         return view('news', ['newsList' => $allNews]);
-        // this is new
-        
     }
     // this is new 2
     public function list()
     {
         $allNews = News::all();
-        return view('news.index', ['newsList' => $allNews]);
+        return view('news.list', ['newsList' => $allNews]);
     }
     public function create()
     {
@@ -35,7 +33,9 @@ class NewsController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'content' => 'required'
+            'content' => 'required',
+            'image' => 'required|string',
+            'source_url' => 'required|url',
         ]);
 
         News::create($request->all());
@@ -53,7 +53,9 @@ class NewsController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'content' => 'required'
+            'content' => 'required',
+            'image' => 'required|string',
+            'source_url' => 'required|url',
         ]);
 
         $news = News::findOrFail($id);

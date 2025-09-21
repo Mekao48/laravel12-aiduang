@@ -19,7 +19,7 @@
     </div>
     @auth
         @if(Auth::user()->role === 'admin')
-    <a href="/news/list" 
+    <a href="{{ route('news.list') }}" 
    class="btn btn-primary rounded-circle shadow-lg" 
    style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; font-size: 30px; display: flex; align-items: center; justify-content: center;">
     +

@@ -5,6 +5,7 @@ use App\Http\Controllers\NewsController;
 use App\Models\Product;
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\Request as HttpRequest;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -178,14 +179,26 @@ Route::get('barchart', function () {
 })->name('barchart');
 
 // project ข่าว elon musk
-Route::middleware(['auth'])->group(function () {
-Route::get('/news/list', [NewsController::class, 'list'])->name('news.index');
-Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
-Route::post('/news', [NewsController::class, 'store'])->name('news.store');
-Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
-Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
-Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/news/list', [NewsController::class, 'list'])->name('news.list');
+        Route::get('/news/create', [NewsController::class, 'create'])->name('news.create');
+        Route::post('/news', [NewsController::class, 'store'])->name('news.store');
+        Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
+        Route::put('/news/{id}', [NewsController::class, 'update'])->name('news.update');
+        Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.destroy');
+    });
 });
+
+//ระบบ login, register
+Route::get('/news/login', function () {
+    return view('news.news_login');
+})->name('news.news_login');
+
+Route::get('/news/register', function () {
+    return view('news.news_register');
+})->name('news.news_register');
+//หน้าหลัก news
 Route::controller(NewsController::class)->group(function () {
     Route::get('/news', 'index')->name('news');
     Route::get('/news/{id}', 'show')->name('news_detail');
