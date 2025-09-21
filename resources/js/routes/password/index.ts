@@ -1,5 +1,6 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition, applyUrlDefaults } from './../../wayfinder'
 import confirmD7e05fEaca14 from './confirm'
+
 /**
 * @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::confirm
  * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
@@ -15,39 +16,20 @@ confirm.definition = {
     url: '/user/confirm-password',
 } satisfies RouteDefinition<["get","head"]>
 
-/**
-* @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::confirm
- * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
- * @route '/user/confirm-password'
- */
 confirm.url = (options?: RouteQueryOptions) => {
     return confirm.definition.url + queryParams(options)
 }
 
-/**
-* @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::confirm
- * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
- * @route '/user/confirm-password'
- */
 confirm.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirm.url(options),
     method: 'get',
 })
-/**
-* @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::confirm
- * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
- * @route '/user/confirm-password'
- */
+
 confirm.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirm.url(options),
     method: 'head',
 })
 
-/**
-* @see \Laravel\Fortify\Http\Controllers\ConfirmablePasswordController::confirm
- * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmablePasswordController.php:40
- * @route '/user/confirm-password'
- */
 const confirmForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirm.url(options),
     method: 'get',
@@ -57,17 +39,19 @@ confirmForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
     action: confirm.url(options),
     method: 'get',
 })
+
 confirmForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirm.url({
-                [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                    _method: 'HEAD',
-                    ...(options?.query ?? options?.mergeQuery ?? {}),
-                }
-            }),
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
     method: 'get',
 })
 
 confirm.form = confirmForm
+
 /**
 * @see \App\Http\Controllers\Auth\ConfirmablePasswordController::confirm
  * @see app/Http/Controllers/Auth/ConfirmablePasswordController.php:18
@@ -83,29 +67,15 @@ confirmPassword.definition = {
     url: '/confirm-password',
 } satisfies RouteDefinition<["get","head"]>
 
-/**
-* @see \App\Http\Controllers\Auth\ConfirmablePasswordController::confirm
- * @see app/Http/Controllers/Auth/ConfirmablePasswordController.php:18
- * @route '/confirm-password'
- */
 confirmPassword.url = (options?: RouteQueryOptions) => {
     return confirmPassword.definition.url + queryParams(options)
 }
 
-/**
-* @see \App\Http\Controllers\Auth\ConfirmablePasswordController::confirm
- * @see app/Http/Controllers/Auth/ConfirmablePasswordController.php:18
- * @route '/confirm-password'
- */
 confirmPassword.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmPassword.url(options),
     method: 'get',
 })
-/**
-* @see \App\Http\Controllers\Auth\ConfirmablePasswordController::confirm
- * @see app/Http/Controllers/Auth/ConfirmablePasswordController.php:18
- * @route '/confirm-password'
- */
+
 confirmPassword.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmPassword.url(options),
     method: 'head',
@@ -132,6 +102,7 @@ confirmPasswordForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'g
 })
 
 confirmPassword.form = confirmPasswordForm
+
 /**
 * @see \Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController::confirmation
  * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmedPasswordStatusController.php:17
@@ -147,39 +118,20 @@ confirmation.definition = {
     url: '/user/confirmed-password-status',
 } satisfies RouteDefinition<["get","head"]>
 
-/**
-* @see \Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController::confirmation
- * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmedPasswordStatusController.php:17
- * @route '/user/confirmed-password-status'
- */
 confirmation.url = (options?: RouteQueryOptions) => {
     return confirmation.definition.url + queryParams(options)
 }
 
-/**
-* @see \Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController::confirmation
- * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmedPasswordStatusController.php:17
- * @route '/user/confirmed-password-status'
- */
 confirmation.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     url: confirmation.url(options),
     method: 'get',
 })
-/**
-* @see \Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController::confirmation
- * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmedPasswordStatusController.php:17
- * @route '/user/confirmed-password-status'
- */
+
 confirmation.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     url: confirmation.url(options),
     method: 'head',
 })
 
-/**
-* @see \Laravel\Fortify\Http\Controllers\ConfirmedPasswordStatusController::confirmation
- * @see vendor/laravel/fortify/src/Http/Controllers/ConfirmedPasswordStatusController.php:17
- * @route '/user/confirmed-password-status'
- */
 const confirmationForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmation.url(options),
     method: 'get',
@@ -189,13 +141,14 @@ confirmationForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'>
     action: confirmation.url(options),
     method: 'get',
 })
+
 confirmationForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: confirmation.url({
-                [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                    _method: 'HEAD',
-                    ...(options?.query ?? options?.mergeQuery ?? {}),
-                }
-            }),
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
     method: 'get',
 })
 
@@ -259,11 +212,11 @@ editForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 })
 editForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: edit.url({
-                [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                    _method: 'HEAD',
-                    ...(options?.query ?? options?.mergeQuery ?? {}),
-                }
-            }),
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
     method: 'get',
 })
 
@@ -309,21 +262,21 @@ update.put = (options?: RouteQueryOptions): RouteDefinition<'put'> => ({
  */
 const updateForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url({
-                [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                    _method: 'PUT',
-                    ...(options?.query ?? options?.mergeQuery ?? {}),
-                }
-            }),
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
     method: 'post',
 })
 
 updateForm.put = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
     action: update.url({
-                [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                    _method: 'PUT',
-                    ...(options?.query ?? options?.mergeQuery ?? {}),
-                }
-            }),
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'PUT',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
     method: 'post',
 })
 
@@ -387,11 +340,11 @@ requestForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 })
 requestForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: request.url({
-                [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                    _method: 'HEAD',
-                    ...(options?.query ?? options?.mergeQuery ?? {}),
-                }
-            }),
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
     method: 'get',
 })
 
@@ -524,11 +477,11 @@ resetForm.get = (args: { token: string | number } | [token: string | number ] | 
 })
 resetForm.head = (args: { token: string | number } | [token: string | number ] | string | number, options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
     action: reset.url(args, {
-                [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                    _method: 'HEAD',
-                    ...(options?.query ?? options?.mergeQuery ?? {}),
-                }
-            }),
+        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
+            _method: 'HEAD',
+            ...(options?.query ?? options?.mergeQuery ?? {}),
+        }
+    }),
     method: 'get',
 })
 
@@ -585,13 +538,14 @@ storeForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => (
 store.form = storeForm
 const password = {
     confirm: Object.assign(confirm, confirmD7e05fEaca14),
-confirmation: Object.assign(confirmation, confirmation),
-edit: Object.assign(edit, edit),
-update: Object.assign(update, update),
-request: Object.assign(request, request),
-email: Object.assign(email, email),
-reset: Object.assign(reset, reset),
-store: Object.assign(store, store),
+    confirmPassword: Object.assign(confirmPassword, confirmPassword),
+    confirmation: Object.assign(confirmation, confirmation),
+    edit: Object.assign(edit, edit),
+    update: Object.assign(update, update),
+    request: Object.assign(request, request),
+    email: Object.assign(email, email),
+    reset: Object.assign(reset, reset),
+    store: Object.assign(store, store),
 }
 
 export default password
