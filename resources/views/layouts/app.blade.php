@@ -40,7 +40,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
         <div class="container">
-            <a class="m-3 navbar-brand" href="{{ route('/') }}">กลับหน้าหลัก</a>
+            <a class="navbar-brand" href="{{ route('home') }}">กลับหน้าหลัก</a>
             <a class="navbar-brand" href="{{ route('news') }}">Elon Musk News</a>
         </div>
         <div class="d-flex align-items-center me-4">
