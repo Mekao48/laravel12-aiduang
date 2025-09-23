@@ -1,0 +1,6 @@
+กดเหล็ก 5 ข้อ
+1.Set-ExecutionPolicy Bypass -Scope Process -Force;
+2.npm install
+3.composer require laravel/installer
+4.php artisan migrate:fresh
+5.php artisan db:seed
